@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TestCervantes
+{
+    public class Marca
+    {
+        public int codigo { get; set; }
+        public string nome { get; set; }
+
+        public Marca(int codigo, string nome)
+        {
+            this.codigo = codigo;
+            this.nome = nome;
+        }
+    }
+}

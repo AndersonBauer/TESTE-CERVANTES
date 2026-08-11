@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TestCervantes.Tests/TestCervantes.Tests.csproj" Id="f13ee03a-dfef-4f77-8123-372bdf16b638" />
+  <Project Path="TestCervantes/TestCervantes.csproj" />
+</Solution>
