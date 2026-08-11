@@ -5,8 +5,10 @@ Para começar voce precisa ter cumprido todos esses requisitos<br>
 * .NET compatível com o projeto<br>
 * O projeto baixado/clonado<br>
 
-PASSO 1 - Criar o banco de dados usando esse comando<br><br>
- CREATE DATABASE VeiculosDB;<br><br>
+PASSO 1 - Criar o banco de dados<br><br>
+ Clica com o botão direito em cima de Databases no PGADMIN<br>
+ Va em CREATE e depois em CREATE DATABASE<br>
+ Abra uma Query Tool<br><br>
 PASSO 2 - Criar a tabela MARCA com o comando<br><br>
  CREATE TABLE Marca (
     Codigo SERIAL PRIMARY KEY,
@@ -74,6 +76,14 @@ Cadastre um veículo.<br>
 Confira no pgAdmin se os dados foram inseridos.<br>
 PASSO 10 - Rode esse comando pra ver se as aplicações rodam certinho e se a TRIGGER está funcionando<br>
 SELECT * FROM LogTransacao
-ORDER BY ID;<br>
+ORDER BY ID;<br><br>
+Para rodas os testes unitários eu tive que baixar as dependencias do MSTest.<br>
+Para baixa-las é só abrir o Gerenciador de Soluções, clicar com o botão direito em cima da pasta TestCervantes.Tests e abrir com o terminal.<br>
+e rodar os comando que eu vou por aqui<br>
+1 - dotnet add package MSTest.TestFramework<br>
+2 - dotnet add package MSTest.TestAdapter<br>
+3 - dotnet restore<br>
+4 - dotnet test<br>
 
+No quarto comando ele ja corre o teste<br>
 Se eu não fiz nada errado e não esqueci de anotar algo provavelmente vai funcionar<br>
