@@ -5,13 +5,13 @@ Para começar voce precisa ter cumprido todos esses requisitos<br>
 * .NET compatível com o projeto<br>
 * O projeto baixado/clonado<br>
 
-PASSO 1 - Criar o banco de dados usando esse comando<br>
- CREATE DATABASE VeiculosDB;<br>
-PASSO 2 - Criar a tabela MARCA com o comando<br>
+PASSO 1 - Criar o banco de dados usando esse comando<br><br>
+ CREATE DATABASE VeiculosDB;<br><br>
+PASSO 2 - Criar a tabela MARCA com o comando<br><br>
  CREATE TABLE Marca (
     Codigo SERIAL PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL UNIQUE
-);<br>
+);<br><br>
 PASSO 3 - Criar a tabela VEICULO com o comando <br>
 CREATE TABLE Veiculo (
     Codigo SERIAL PRIMARY KEY,
@@ -22,16 +22,15 @@ CREATE TABLE Veiculo (
     Tipo VARCHAR(10) NOT NULL CHECK (Tipo IN ('CARRO', 'MOTO')),
     FOREIGN KEY (MarcaCodigo)
         REFERENCES Marca(Codigo)
-);<br>
-
-PASSO 4 - Criar a tabela LogTransacao com o comando<br>
+);<br><br>
+PASSO 4 - Criar a tabela LogTransacao com o comando<br><br>
 CREATE TABLE LogTransacao (
     ID SERIAL PRIMARY KEY,
     OPERACAO VARCHAR(10) NOT NULL,
     DATAHORA TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     TABELAALTERADA VARCHAR(50) NOT NULL
-);<br>
-PASSO 5 - Criar a função da TRIGGER<br>
+);<br><br>
+PASSO 5 - Criar a função da TRIGGER<br><br>
 CREATE OR REPLACE FUNCTION registrar_log_veiculo()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -47,23 +46,23 @@ BEGIN
     END IF;
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;<br>
-PASSO 6 - Criar a TRIGGER com o comando <br>
+$$ LANGUAGE plpgsql;<br><br>
+PASSO 6 - Criar a TRIGGER com o comando <br><br>
 CREATE TRIGGER trigger_log_veiculo
 AFTER INSERT OR UPDATE OR DELETE
 ON Veiculo
 FOR EACH ROW
-EXECUTE FUNCTION registrar_log_veiculo();<br>
+EXECUTE FUNCTION registrar_log_veiculo();<br><br>
 PASSO 7 - Verificar se funciona com esses comandos<br>
 INSERT INTO marca (Nome) VALUES ('MITSUBISHI');
-SELECT * FROM marca;<br>
+SELECT * FROM marca;<br><br>
 // salve o id da marca (se for o primeiro insert vai ser 1)<br>
-Depois -<br>
+Depois -<br><br>
 INSERT INTO veiculo (Placa, Modelo, Ano, Tipo, MarcaCodigo) VALUES ('ABC1D23', 'LANCER', 2022, 'CARRO', 1);
-SELECT * FROM veiculo;<br>
-E por ultimo verificar se a TRIGGER esta funcionando<br>
-SELECT * FROM LogTransacao;<br>
-PASSO 8 - Linkar a aplicação ao banco de dados, só trocar lá a parte SENHA_DE_VOCES pela senha que voces usam (Linha 16 do arquivo DbConexao)<br>
+SELECT * FROM veiculo;<br><br>
+E por ultimo verificar se a TRIGGER esta funcionando<br><br>
+SELECT * FROM LogTransacao;<br><br>
+PASSO 8 - Linkar a aplicação ao banco de dados, só trocar lá a parte SENHA_DE_VOCES pela senha que voces usam (Linha 16 do arquivo DbConexao)<br><br>
 PASSO 9 - <br>
 Abra o projeto no Visual Studio.<br>
 Confirme que o PostgreSQL está em execução.<br>
